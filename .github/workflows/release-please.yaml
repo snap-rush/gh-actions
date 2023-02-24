@@ -1,0 +1,41 @@
+name: Gem Release Workflow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release-ruby-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: ruby
+          package-name: hola
+          version-file: hola.gemspec
+          versioning-strategy: always-bump-patch
+      - uses: actions/checkout@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
+        if: ${{ steps.release.outputs.release_created }}
+
+      
+      # Setup ruby if a release was created
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
+        if: ${{ steps.release.outputs.release_created }}
+      - run: bundle install
+        if: ${{ steps.release.outputs.release_created }}
+      # Create and Publish Gem
+      - name: publish gem
+        run: |
+          mkdir -p $HOME/.gem
+          echo "release_version=$(gem build *.gemspec | grep Version | awk '{print $NF}')" >> $GITHUB_ENV
+          echo "sd_services_commit=$(git rev-parse --short origin/master)" >> $GITHUB_ENV
+          pr_number=$(gh pr list -s merged -L 1 --json number -q '.[0].number')
+          echo "reviewer_handle=$(gh pr view $pr_number --json reviews -q '.reviews[0].author.login')" >> $GITHUB_ENV
+          echo $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
+        if: ${{ steps.release.outputs.release_created }}
