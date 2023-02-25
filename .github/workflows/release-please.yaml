@@ -10,7 +10,9 @@ jobs:
         run: |
           npm install -g @commitlint/cli @commitlint/config-conventional
           echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
-          git log -n 1 --pretty=format:'%s' | commitlint
+          message=$(git log -n 1 --pretty=format:'%s')
+          echo "Analysing commit - $message"
+          echo $message | commitlint
           echo $GITHUB_REF_NAME
           echo "Git commit looks good!"
 
