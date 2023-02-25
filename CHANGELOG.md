@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/snap-rush/gh-actions/compare/v1.0.0...v1.1.0) (2023-02-25)
+
+
+### Bug Fixes
+
+* try minor version ([#6](https://github.com/snap-rush/gh-actions/issues/6)) ([24f4669](https://github.com/snap-rush/gh-actions/commit/24f46695e3fcb87be0ba6fde55a889fbf16f01cf))
+
 ## 1.0.0 (2023-02-25)
 
 
