@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir -p $HOME/.gem
           echo "release_version=$(gem build *.gemspec | grep Version | awk '{print $NF}')" >> $GITHUB_ENV
-          echo "sd_services_commit=$(git rev-parse --short origin/master)" >> $GITHUB_ENV
+          echo "sd_services_commit=$(git rev-parse --short origin/main)" >> $GITHUB_ENV
           pr_number=$(gh pr list -s merged -L 1 --json number -q '.[0].number')
           echo "reviewer_handle=$(gh pr view $pr_number --json reviews -q '.reviews[0].author.login')" >> $GITHUB_ENV
           echo $GITHUB_ENV
