@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/snap-rush/gh-actions/compare/v1.2.0...v1.3.0) (2023-02-25)
+
+
+### Bug Fixes
+
+* test new flow ([#12](https://github.com/snap-rush/gh-actions/issues/12)) ([1b348d3](https://github.com/snap-rush/gh-actions/commit/1b348d37b6ae27748413795b09953952d214cb41))
+
 ## [1.2.0](https://github.com/snap-rush/gh-actions/compare/v1.1.0...v1.2.0) (2023-02-25)
 
 
