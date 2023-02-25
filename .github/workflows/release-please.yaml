@@ -13,7 +13,6 @@ jobs:
           message=$(git log -n 1 --pretty=format:'%s')
           echo "Analysing commit - $message"
           echo $message | commitlint
-          echo $GITHUB_REF_NAME
           echo "Git commit looks good!"
 
   release-ruby-package:
@@ -30,7 +29,7 @@ jobs:
           versioning-strategy: always-bump-minor
       - uses: actions/checkout@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
+          GH_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
         if: ${{ steps.release.outputs.release_created }}
 
       
@@ -51,5 +50,5 @@ jobs:
           echo "reviewer_handle=$(gh pr view $pr_number --json reviews -q '.reviews[0].author.login')" >> $GITHUB_ENV
           echo $GITHUB_ENV
         env:
-          GITHUB_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
+          GH_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
         if: ${{ steps.release.outputs.release_created }}
