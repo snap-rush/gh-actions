@@ -1,11 +1,23 @@
 name: Gem Release Workflow
-on:
-  push:
-    branches:
-      - main
+on: push
 jobs:
+  validate-commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+      - name: validate commit format
+        run: |
+          npm install -g @commitlint/cli @commitlint/config-conventional
+          echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+          git log -n 1 --pretty=format:'%s' | commitlint
+          echo $GITHUB_REF_NAME
+          echo "Git commit looks good!"
+
   release-ruby-package:
     runs-on: ubuntu-latest
+    needs: [validate-commit-message]
+    if: ${{ GITHUB_REF_NAME }} == "main"
     steps:
       - uses: google-github-actions/release-please-action@v3
         id: release
