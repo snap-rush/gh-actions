@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/snap-rush/gh-actions/compare/v1.1.0...v1.2.0) (2023-02-25)
+
+
+### Features
+
+* trying bump patch ([#10](https://github.com/snap-rush/gh-actions/issues/10)) ([577fd55](https://github.com/snap-rush/gh-actions/commit/577fd5528715ebb89538e739ed7c7b8b784d87a1))
+
 ## [1.1.0](https://github.com/snap-rush/gh-actions/compare/v1.0.0...v1.1.0) (2023-02-25)
 
 
