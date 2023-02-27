@@ -28,6 +28,7 @@ jobs:
           package-name: hola
           version-file: hola.gemspec
           versioning-strategy: always-bump-minor
+          GH_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
       - uses: actions/checkout@v2
         with:
           GH_TOKEN: ${{ secrets.PRIVATE_TEST_TOKEN }}
