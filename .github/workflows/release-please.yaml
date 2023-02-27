@@ -14,6 +14,7 @@ jobs:
           echo "Analysing commit - $message"
           echo $message | commitlint
           echo "Git commit looks good!"
+          echo "Test auto-merge"
 
   release-ruby-package:
     runs-on: ubuntu-latest
