@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/snap-rush/gh-actions/compare/v1.3.0...v1.4.0) (2023-02-27)
+
+
+### Bug Fixes
+
+* test release please with personal tojen ([#19](https://github.com/snap-rush/gh-actions/issues/19)) ([9504d6d](https://github.com/snap-rush/gh-actions/commit/9504d6dc6524903018fec80d1e2879eb59afa521))
+* test status checks ([#17](https://github.com/snap-rush/gh-actions/issues/17)) ([3d7631f](https://github.com/snap-rush/gh-actions/commit/3d7631f821dba7fc6a514cd42ee0a25124d31198))
+
 ## [1.3.0](https://github.com/snap-rush/gh-actions/compare/v1.2.0...v1.3.0) (2023-02-25)
 
 
