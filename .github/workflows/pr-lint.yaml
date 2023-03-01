@@ -1,6 +1,8 @@
 name: "PR Lint"
 
-on: pull_request
+on:
+  pull_request:
+    types: [ opened, edited, synchronize, reopened, ready_for_review ]
 
 jobs:
   main:
