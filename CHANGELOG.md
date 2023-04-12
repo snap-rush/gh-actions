@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/snap-rush/gh-actions/compare/v1.5.0...v1.6.0) (2023-04-12)
+
+
+### Features
+
+* adds gh cli ([#27](https://github.com/snap-rush/gh-actions/issues/27)) ([8b9bd61](https://github.com/snap-rush/gh-actions/commit/8b9bd6187a87b1e85bd0b51c3d64b11974afa6d5))
+
 ## [1.5.0](https://github.com/snap-rush/gh-actions/compare/v1.4.0...v1.5.0) (2023-03-01)
 
 
