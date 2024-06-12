@@ -29,6 +29,4 @@ jobs:
     needs: [ generate-id ]
     steps:
     - name: job output
-      run: |
-        echo ${{ toJson(needs.jobs) }}
-
+      run: echo "${{ toJSON(needs.generate-id) }}"
