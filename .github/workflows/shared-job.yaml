@@ -21,6 +21,7 @@ jobs:
       id: generate-run-id
       run: |
         runId=$RANDOM
+        echo $runId
         echo "runId=$runId" >> "$GITHUB_OUTPUT"
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
