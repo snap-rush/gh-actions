@@ -1,6 +1,7 @@
 name: generate ids
 
 on:
+  push:
   workflow_call:
     outputs:
       runId:
