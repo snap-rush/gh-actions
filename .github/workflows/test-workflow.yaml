@@ -1,0 +1,13 @@
+name: Test workflow
+on:
+  push:
+    branches:
+      - test-tag
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 'v1.6.0'
