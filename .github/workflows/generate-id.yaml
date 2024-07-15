@@ -33,7 +33,9 @@ jobs:
   read-outputs:
     runs-on: ubuntu-latest
     needs: [ generate-id ]
-    if: ${{ needs.generate-id.result == 'failure' }}
+    # if: ${{ needs.generate-id.result == 'failure' }}
     steps:
     - name: job output
-      run: echo "${{ toJSON(needs.generate-id) }}"
+      run: |
+        echo "${{ needs.generate-id.result }}"
+        echo "${{ toJSON(needs.generate-id) }}"
