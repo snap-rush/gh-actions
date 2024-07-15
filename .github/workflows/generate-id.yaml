@@ -24,7 +24,7 @@ jobs:
         runId=$(uuidgen)
         echo $runId
         echo "runId=$runId" >> "$GITHUB_OUTPUT"
-        if [[ "${{ matrix.map }}" == "A" ]] then;
+        if [[ "${{ matrix.map }}" == "A" ]]; then
           exit 1
         fi
     outputs:
