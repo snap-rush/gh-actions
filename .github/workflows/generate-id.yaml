@@ -11,6 +11,7 @@ on:
 jobs:
   generate-id:
     strategy:
+      fail-fast: false
       matrix:
         map: [ 'A', 'B' ]
     runs-on: ubuntu-latest
