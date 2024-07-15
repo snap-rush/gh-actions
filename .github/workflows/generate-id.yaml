@@ -24,16 +24,12 @@ jobs:
         runId=$(uuidgen)
         echo $runId
         echo "runId=$runId" >> "$GITHUB_OUTPUT"
-        if [[ "${{ matrix.map }}" == "A" ]]; then
-          exit 1
-        fi
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
 
   read-outputs:
     runs-on: ubuntu-latest
     needs: [ generate-id ]
-    # if: ${{ needs.generate-id.result == 'failure' }}
     if: failure()
     steps:
     - name: job output
