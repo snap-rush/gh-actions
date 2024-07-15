@@ -39,5 +39,4 @@ jobs:
     - name: job output
       run: |
         echo "${{ needs.generate-id.result }}"
-        echo "${{ failure() }}"
         echo "${{ toJSON(needs.generate-id) }}"
