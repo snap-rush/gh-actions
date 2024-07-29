@@ -26,7 +26,7 @@ jobs:
         echo "runId=null" >> "$GITHUB_OUTPUT"
 
         branch=${{ inputs.branch }}
-        repoName=snapstack
+        repoName=platstack
         if [[ -z "$branch" ]]
         then
           if [[ $repoName == "snapstack" ]]
