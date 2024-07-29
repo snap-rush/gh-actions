@@ -23,14 +23,14 @@ jobs:
       run: |
         runId=$(uuidgen)
         echo $runId
-        echo "runId=$runId" >> "$GITHUB_OUTPUT"
+        echo "runId=null" >> "$GITHUB_OUTPUT"
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
 
   read-outputs:
     runs-on: ubuntu-latest
     needs: [ generate-id ]
-    if: failure()
+    if: ${{ needs.generate-id.outputs.runId == null }}
     steps:
     - name: job output
       run: |
