@@ -26,6 +26,7 @@ jobs:
         echo "runId=null" >> "$GITHUB_OUTPUT"
 
         branch=${{ inputs.branch }}
+        branch=release
         repoName=platstack
         if [[ -z "$branch" ]]
         then
