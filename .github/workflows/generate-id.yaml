@@ -36,7 +36,7 @@ jobs:
             branch=main
           fi
         fi
-        echo "branch=branch" >> "$GITHUB_OUTPUT"
+        echo "branch=$branch" >> "$GITHUB_OUTPUT"
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
       branch: ${{ steps.generate-run-id.outputs.branch }}
