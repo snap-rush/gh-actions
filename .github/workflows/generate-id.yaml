@@ -24,8 +24,22 @@ jobs:
         runId=$(uuidgen)
         echo $runId
         echo "runId=null" >> "$GITHUB_OUTPUT"
+
+        branch=${{ inputs.branch }}
+        repoName=snapstack
+        if [[ -z "$branch" ]]
+        then
+          if [[ ${{ "$repoName" == "snapstack" ]]
+          then
+            branch=master
+          else
+            branch=main
+          fi
+        fi
+        echo "branch=branch" >> "$GITHUB_OUTPUT"
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
+      branch: ${{ steps.generate-run-id.outputs.branch }}
 
   read-outputs:
     runs-on: ubuntu-latest
