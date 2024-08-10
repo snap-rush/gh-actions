@@ -24,7 +24,7 @@ jobs:
         runId=$(uuidgen)
         echo $runId
         echo "runId=$runId" >> "$GITHUB_OUTPUT"
-        test="test0=${{ secrets.TEST }},test1=${{ secrets.TEST1 }}"
+        test="test0=${{ secrets.TEST }} test1=${{ secrets.TEST1 }},test2=${{ secrets.TEST2 }}"
         echo "branch=$test" >> "$GITHUB_OUTPUT"
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
