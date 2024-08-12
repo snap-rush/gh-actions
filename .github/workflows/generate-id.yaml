@@ -26,7 +26,7 @@ jobs:
         echo "runId=$runId" >> "$GITHUB_OUTPUT"
         test="test0=${{ secrets.TEST }} test1=${{ secrets.TEST1 }},test2=${{ secrets.TEST2 }}"
         echo "branch=$test" >> "$GITHUB_OUTPUT"
-        mv coverage/.resultset.json  coverage/.resultset-0.json 2>/dev/null
+        mv coverage/.resultset.json  coverage/.resultset-0.json 2>/dev/null || true
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
       branch: ${{ steps.generate-run-id.outputs.branch }}
