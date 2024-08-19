@@ -7,9 +7,14 @@ on:
       runId:
         description: "run id"
         value: ${{ jobs.generate-id.outputs.runId }}
+  workflow_dispatch:
+    inputs:
+      runId:
+        description: "run id"
 
 jobs:
   generate-id:
+    if: ${{ ! inputs.runId }}
     strategy:
       fail-fast: false
       matrix:
