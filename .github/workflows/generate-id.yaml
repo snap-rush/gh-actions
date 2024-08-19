@@ -1,0 +1,48 @@
+name: generate ids
+
+on:
+  push:
+  workflow_call:
+    outputs:
+      runId:
+        description: "run id"
+        value: ${{ jobs.generate-id.outputs.runId }}
+  workflow_dispatch:
+    inputs:
+      runId:
+        description: "run id"
+
+jobs:
+  generate-id:
+    if: ${{ ! inputs.runId }}
+    strategy:
+      fail-fast: false
+      matrix:
+        map: [ 'A', 'B' ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Generate run id
+      id: generate-run-id
+      run: |
+        runId=$(uuidgen)
+        echo $runId
+        echo "runId=$runId" >> "$GITHUB_OUTPUT"
+        test="test0=${{ secrets.TEST }} test1=${{ secrets.TEST1 }},test2=${{ secrets.TEST2 }}"
+        echo "branch=$test" >> "$GITHUB_OUTPUT"
+        mv coverage/.resultset.json  coverage/.resultset-0.json 2>/dev/null || true
+    outputs:
+      runId: ${{ steps.generate-run-id.outputs.runId }}
+      branch: ${{ steps.generate-run-id.outputs.branch }}
+
+  read-outputs:
+    runs-on: ubuntu-latest
+    needs: [ generate-id ]
+    if: ${{ needs.generate-id.outputs.runId }}
+    steps:
+    - name: job output
+      run: |
+        echo "${{ needs.generate-id.result }}"
+        echo "${{ needs.generate-id.outputs.branch }}"
+        echo "${{ toJSON(needs.generate-id) }}"

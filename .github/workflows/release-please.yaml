@@ -1,5 +1,7 @@
 name: Gem Release Workflow
-on: push
+on:
+  # push:
+  workflow_dispatch:
 jobs:
   validate-commit-message:
     runs-on: ubuntu-latest
