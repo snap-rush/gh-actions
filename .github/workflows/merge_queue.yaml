@@ -1,0 +1,12 @@
+name: Continuous Integration
+on:
+  merge_group:
+    types: [checks_requested]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo hello
+        id: echo-hello
+        run: echo "Hello world"
