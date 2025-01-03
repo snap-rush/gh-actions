@@ -19,7 +19,7 @@ on:
 
 jobs:
   generate-id:
-    if: ${{ ! inputs.runId }}
+    # if: ${{ ! inputs.runId }}
     strategy:
       fail-fast: false
       matrix:
