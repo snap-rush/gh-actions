@@ -11,6 +11,11 @@ on:
     inputs:
       runId:
         description: "run id"
+        type: string
+      testBoolean:
+        description: "run id"
+        type: boolean
+        default: true
 
 jobs:
   generate-id:
@@ -29,21 +34,22 @@ jobs:
         runId=$(uuidgen)
         echo $runId
         echo "runId=$runId" >> "$GITHUB_OUTPUT"
-        test="test0=${{ secrets.TEST }} test1=${{ secrets.TEST1 }},test2=${{ secrets.TEST2 }}"
-        echo "branch=$test" >> "$GITHUB_OUTPUT"
-        mv coverage/.resultset.json  coverage/.resultset-0.json 2>/dev/null || true
+        echo "testBoolean: ${{ inputs.testBoolean && '' || format('-f {0}.yaml', inputs.runId) }}"
+# test="test0=${{ secrets.TEST }} test1=${{ secrets.TEST1 }},test2=${{ secrets.TEST2 }}"
+# echo "branch=$test" >> "$GITHUB_OUTPUT"
+# mv coverage/.resultset.json  coverage/.resultset-0.json 2>/dev/null || true
     outputs:
       runId: ${{ steps.generate-run-id.outputs.runId }}
-      branch: ${{ steps.generate-run-id.outputs.branch }}
+      # branch: ${{ steps.generate-run-id.outputs.branch }}
 
-  read-outputs:
-    runs-on: ubuntu-latest
-    needs: [ generate-id ]
-    if: ${{ needs.generate-id.outputs.runId }}
-    steps:
-    - name: job output
-      run: |
-        echo "${{ needs.generate-id.result }}"
-        echo "${{ needs.generate-id.outputs.branch }}"
-        echo "${{ toJSON(needs.generate-id) }}"
+  # read-outputs:
+  #   runs-on: ubuntu-latest
+  #   needs: [ generate-id ]
+  #   if: ${{ needs.generate-id.outputs.runId }}
+  #   steps:
+  #   - name: job output
+  #     run: |
+  #       echo "${{ needs.generate-id.result }}"
+  #       echo "${{ needs.generate-id.outputs.branch }}"
+  #       echo "${{ toJSON(needs.generate-id) }}"
 
