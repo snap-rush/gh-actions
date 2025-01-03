@@ -34,7 +34,7 @@ jobs:
         runId=$(uuidgen)
         echo $runId
         echo "runId=$runId" >> "$GITHUB_OUTPUT"
-        echo "testBoolean: ${{ inputs.testBoolean && '' || format('-f {0}.yaml', inputs.runId) }}"
+        echo "testBoolean: ${{ !inputs.testBoolean && format('-f {0}.yaml', inputs.runId) || '' }}"
 # test="test0=${{ secrets.TEST }} test1=${{ secrets.TEST1 }},test2=${{ secrets.TEST2 }}"
 # echo "branch=$test" >> "$GITHUB_OUTPUT"
 # mv coverage/.resultset.json  coverage/.resultset-0.json 2>/dev/null || true
